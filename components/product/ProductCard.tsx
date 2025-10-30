@@ -1,8 +1,9 @@
 'use client'
 
+import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { Star, ShoppingCart } from 'lucide-react'
+import { Star, ShoppingCart, Check } from 'lucide-react'
 import { useCartStore } from '@/lib/stores/cartStore'
 
 interface Product {
@@ -24,6 +25,7 @@ interface ProductCardProps {
 
 export function ProductCard({ product }: ProductCardProps) {
   const { addItem } = useCartStore()
+  const [isAdded, setIsAdded] = useState(false)
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault()
@@ -37,6 +39,10 @@ export function ProductCard({ product }: ProductCardProps) {
       price: product.price,
       image: product.image,
     })
+
+    // Show success feedback
+    setIsAdded(true)
+    setTimeout(() => setIsAdded(false), 2000)
   }
 
   const renderStars = (rating: number) => {
@@ -80,18 +86,20 @@ export function ProductCard({ product }: ProductCardProps) {
           </div>
 
           {/* Quick Add Button */}
-          <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-200 flex items-center justify-center">
+          <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center">
             <button
               onClick={handleAddToCart}
-              disabled={product.isSoldOut}
-              className={`opacity-0 group-hover:opacity-100 transition-opacity duration-200 ${
+              disabled={product.isSoldOut || isAdded}
+              className={`opacity-0 group-hover:opacity-100 transition-all duration-200 ${
                 product.isSoldOut
                   ? 'bg-gray-400 cursor-not-allowed'
-                  : 'bg-primary-600 hover:bg-primary-700'
-              } text-white p-2 rounded-full shadow-lg`}
+                  : isAdded
+                  ? 'bg-green-600'
+                  : 'bg-saffron hover:bg-saffron-dark hover:scale-110'
+              } text-white p-3 rounded-full shadow-xl`}
               aria-label={`Add ${product.title} to cart`}
             >
-              <ShoppingCart size={20} />
+              {isAdded ? <Check size={20} /> : <ShoppingCart size={20} />}
             </button>
           </div>
         </div>
@@ -114,12 +122,12 @@ export function ProductCard({ product }: ProductCardProps) {
 
           {/* Price */}
           <div className="flex items-center gap-2 mb-3">
-            <span className="text-lg font-bold text-gray-900">
-              ${product.price.toFixed(2)}
+            <span className="text-xl font-bold text-brown-900">
+              ₹{product.price.toLocaleString('en-IN')}
             </span>
             {product.compareAtPrice && (
-              <span className="text-sm text-gray-500 line-through">
-                ${product.compareAtPrice.toFixed(2)}
+              <span className="text-sm text-brown-500 line-through">
+                ₹{product.compareAtPrice.toLocaleString('en-IN')}
               </span>
             )}
           </div>
@@ -127,14 +135,28 @@ export function ProductCard({ product }: ProductCardProps) {
           {/* Add to Cart Button */}
           <button
             onClick={handleAddToCart}
-            disabled={product.isSoldOut}
-            className={`w-full py-2 px-4 rounded-lg font-medium transition-colors duration-200 ${
+            disabled={product.isSoldOut || isAdded}
+            className={`w-full py-3 px-4 rounded-lg font-semibold transition-all duration-200 flex items-center justify-center gap-2 ${
               product.isSoldOut
-                ? 'bg-gray-200 text-gray-500 cursor-not-allowed'
-                : 'bg-primary-600 hover:bg-primary-700 text-white'
+                ? 'bg-gray-300 text-gray-600 cursor-not-allowed'
+                : isAdded
+                ? 'bg-green-600 text-white'
+                : 'bg-saffron hover:bg-saffron-dark text-white shadow-md hover:shadow-lg'
             }`}
           >
-            {product.isSoldOut ? 'Sold Out' : 'Add to Cart'}
+            {product.isSoldOut ? (
+              'Sold Out'
+            ) : isAdded ? (
+              <>
+                <Check size={18} />
+                Added to Cart!
+              </>
+            ) : (
+              <>
+                <ShoppingCart size={18} />
+                Add to Cart
+              </>
+            )}
           </button>
         </div>
       </Link>

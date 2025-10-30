@@ -46,8 +46,8 @@ export function CartItem({ item }: CartItemProps) {
             Variant: {item.variant}
           </p>
         )}
-        <p className="text-lg font-semibold text-gray-900 mt-1">
-          ${item.price.toFixed(2)}
+        <p className="text-lg font-bold text-brown-900 mt-1">
+          ₹{item.price.toLocaleString('en-IN')}
         </p>
       </div>
 
@@ -74,8 +74,8 @@ export function CartItem({ item }: CartItemProps) {
 
       {/* Total Price */}
       <div className="text-right">
-        <p className="text-lg font-semibold text-gray-900">
-          ${(item.price * item.quantity).toFixed(2)}
+        <p className="text-xl font-bold font-serif text-saffron">
+          ₹{(item.price * item.quantity).toLocaleString('en-IN')}
         </p>
       </div>
 

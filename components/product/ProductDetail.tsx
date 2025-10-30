@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import Image from 'next/image'
-import { Star, Heart, Share2, Truck, Shield, RotateCcw } from 'lucide-react'
+import { Star, Heart, Share2, Truck, Shield, RotateCcw, ShoppingCart, Check } from 'lucide-react'
 import { useCartStore } from '@/lib/stores/cartStore'
 
 interface Product {
@@ -39,18 +39,28 @@ export function ProductDetail({ product }: ProductDetailProps) {
   const [selectedVariant, setSelectedVariant] = useState(product.variants[0])
   const [quantity, setQuantity] = useState(1)
   const [isWishlisted, setIsWishlisted] = useState(false)
+  const [isAdded, setIsAdded] = useState(false)
   const { addItem } = useCartStore()
 
   const handleAddToCart = () => {
     if (product.isSoldOut) return
 
-    addItem({
-      id: `${product.id}-${selectedVariant.id}`,
-      title: `${product.title} - ${selectedVariant.name}`,
-      price: selectedVariant.price / 100,
-      image: product.images[0],
-      variant: selectedVariant.name,
-    })
+    for (let i = 0; i < quantity; i++) {
+      addItem({
+        id: `${product.id}-${selectedVariant.id}`,
+        title: `${product.title} - ${selectedVariant.name}`,
+        price: selectedVariant.price / 100,
+        image: product.images[0],
+        variant: selectedVariant.name,
+      })
+    }
+
+    // Show success feedback
+    setIsAdded(true)
+    setTimeout(() => setIsAdded(false), 3000)
+
+    // Scroll to top to see cart update
+    window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
   const renderStars = (rating: number) => {
@@ -131,12 +141,17 @@ export function ProductDetail({ product }: ProductDetailProps) {
 
             {/* Price */}
             <div className="flex items-center gap-3">
-              <span className="text-3xl font-bold text-gray-900">
-                ${(selectedVariant.price / 100).toFixed(2)}
+              <span className="text-4xl font-bold font-serif text-brown-900">
+                ₹{(selectedVariant.price / 100).toLocaleString('en-IN')}
               </span>
               {product.compareAtCents && (
-                <span className="text-xl text-gray-500 line-through">
-                  ${(product.compareAtCents / 100).toFixed(2)}
+                <span className="text-2xl text-brown-400 line-through">
+                  ₹{(product.compareAtCents / 100).toLocaleString('en-IN')}
+                </span>
+              )}
+              {product.compareAtCents && (
+                <span className="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                  Save ₹{((product.compareAtCents - selectedVariant.price) / 100).toLocaleString('en-IN')}
                 </span>
               )}
             </div>
@@ -190,14 +205,28 @@ export function ProductDetail({ product }: ProductDetailProps) {
             <div className="space-y-3">
               <button
                 onClick={handleAddToCart}
-                disabled={product.isSoldOut}
-                className={`w-full py-3 px-6 rounded-lg font-medium text-lg transition-colors ${
+                disabled={product.isSoldOut || isAdded}
+                className={`w-full py-4 px-6 rounded-xl font-bold text-lg transition-all duration-200 flex items-center justify-center gap-3 ${
                   product.isSoldOut
-                    ? 'bg-gray-200 text-gray-500 cursor-not-allowed'
-                    : 'bg-primary-600 hover:bg-primary-700 text-white'
+                    ? 'bg-gray-300 text-gray-600 cursor-not-allowed'
+                    : isAdded
+                    ? 'bg-green-600 text-white scale-105'
+                    : 'bg-saffron hover:bg-saffron-dark text-white shadow-lg hover:shadow-xl hover:scale-105'
                 }`}
               >
-                {product.isSoldOut ? 'Sold Out' : 'Add to Cart'}
+                {product.isSoldOut ? (
+                  'Sold Out'
+                ) : isAdded ? (
+                  <>
+                    <Check size={24} />
+                    Added {quantity} to Cart!
+                  </>
+                ) : (
+                  <>
+                    <ShoppingCart size={24} />
+                    Add {quantity} to Cart
+                  </>
+                )}
               </button>
 
               <div className="flex gap-3">
@@ -305,3 +334,4 @@ export function ProductDetail({ product }: ProductDetailProps) {
     </div>
   )
 }
+
