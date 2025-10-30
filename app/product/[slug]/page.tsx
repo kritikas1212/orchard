@@ -1,4 +1,5 @@
 import { ProductDetail } from '@/components/product/ProductDetail'
+import { ProductStructuredData } from '@/components/seo/StructuredData'
 import { notFound } from 'next/navigation'
 
 // Mock data - in real app this would come from API
@@ -91,5 +92,21 @@ export default function ProductPage({ params }: ProductPageProps) {
     notFound()
   }
 
-  return <ProductDetail product={product} />
+  return (
+    <>
+      <ProductStructuredData
+        product={{
+          title: product.title,
+          description: product.description,
+          price: product.priceCents / 100,
+          image: product.images[0],
+          sku: product.sku,
+          rating: product.rating,
+          reviewCount: product.reviewCount,
+          availability: product.isSoldOut ? 'OutOfStock' : 'InStock',
+        }}
+      />
+      <ProductDetail product={product} />
+    </>
+  )
 }

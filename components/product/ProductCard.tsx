@@ -54,14 +54,15 @@ export function ProductCard({ product }: ProductCardProps) {
   }
 
   return (
-    <div className="group relative bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow duration-200">
+    <div className="group relative bg-white rounded-xl shadow-sm border-2 border-brown-100 overflow-hidden hover:shadow-xl hover:border-gold-300 transition-all duration-300">
       <Link href={`/product/${product.slug}`}>
-        <div className="relative aspect-square overflow-hidden">
+        <div className="relative aspect-square overflow-hidden bg-ivory">
           <Image
             src={product.image}
-            alt={product.title}
+            alt={`${product.title} - Premium A2 Bilona ghee hand-churned from grass-fed Gir cows`}
             fill
-            className="object-cover group-hover:scale-105 transition-transform duration-200"
+            className="object-cover group-hover:scale-110 transition-transform duration-300"
+            sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
           />
           
           {/* Badges */}
