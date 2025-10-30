@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { Milk, Blend, TestTubes } from 'lucide-react'
+import { Milk, Shuffle, TestTubes } from 'lucide-react'
 
 export function OurProcess() {
   const steps = [
@@ -15,7 +15,7 @@ export function OurProcess() {
     },
     {
       number: '02',
-      icon: Blend,
+      icon: Shuffle,
       title: 'Bilona Churning',
       subtitle: 'Traditional Hand-Churned',
       description: 'Using the ancient Bilona method, we hand-churn curd made from A2 milk in wooden churns. This slow, traditional process (taking 2-3 hours) preserves nutrients and creates the authentic granular texture.',

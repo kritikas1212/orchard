@@ -1,6 +1,6 @@
 import Image from 'next/image'
 import Link from 'next/link'
-import { Milk, Users, Droplet, Flame, TestTubes, Package, Award, Heart } from 'lucide-react'
+import { Milk, Users, Droplet, Flame, TestTubes, Package, Award, Heart, Shuffle } from 'lucide-react'
 
 export default function ProcessPage() {
   return (
@@ -156,7 +156,7 @@ export default function ProcessPage() {
                 <div className="space-y-6">
                   <div className="flex items-center gap-4">
                     <div className="w-16 h-16 bg-gold-100 rounded-2xl flex items-center justify-center">
-                      <Blend size={32} className="text-gold-600" />
+                      <Shuffle size={32} className="text-gold-600" />
                     </div>
                     <div>
                       <span className="text-gold-600 font-semibold text-sm">Step 3</span>
