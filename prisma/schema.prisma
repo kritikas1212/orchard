@@ -32,6 +32,29 @@ model Product {
   variants      Json?
   inventory     Int
   isActive      Boolean    @default(true)
+  
+  // A2 Ghee Specific Fields
+  isA2          Boolean    @default(false)
+  process       String?    // e.g., "Bilona Hand-Churned"
+  milkSource    String?    // e.g., "Grass-fed Gir Cows"
+  labReports    Json?      // Array of lab report objects
+  certifications Json?     // Array of certification objects
+  
+  // Subscription Options
+  subscriptionAvailable Boolean @default(false)
+  subscriptionIntervals String[] // ["monthly", "quarterly", "biannual"]
+  subscriptionDiscount  Int?     // Percentage discount
+  
+  // Gift & Packaging
+  giftPackagingAvailable Boolean @default(false)
+  giftPackagingPriceCents Int?
+  
+  // Product Details
+  shelfLifeMonths Int?
+  weight          String?  // e.g., "500g", "1L"
+  nutritionFacts  Json?
+  usageNotes      String?
+  
   createdAt     DateTime   @default(now())
   updatedAt     DateTime   @updatedAt
 }
