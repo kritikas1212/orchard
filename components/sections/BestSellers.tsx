@@ -55,7 +55,7 @@ const bestSellers = [
 
 export function BestSellers() {
   return (
-    <section className="py-16 bg-gradient-to-br from-white to-ivory">
+    <section className="py-20 md:py-32 bg-gradient-to-br from-white to-ivory">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <span className="inline-block text-gold-600 font-semibold text-sm uppercase tracking-wider mb-3">

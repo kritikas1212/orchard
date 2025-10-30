@@ -13,15 +13,43 @@
     @apply text-brown-800 bg-ivory;
   }
   
-  h1, h2, h3, h4, h5, h6 {
+  h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 700;
+    font-size: 48px;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+  
+  h2 {
     font-family: 'Playfair Display', Georgia, serif;
     font-weight: 600;
-    letter-spacing: -0.02em;
+    font-size: 32px;
+    letter-spacing: -0.01em;
+    line-height: 1.3;
+  }
+  
+  h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 1.4;
+  }
+  
+  h4, h5, h6 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 600;
+  }
+  
+  body, p {
+    font-size: 18px;
+    line-height: 1.6;
   }
   
   .hero-heading {
     font-family: 'Playfair Display', Georgia, serif;
     font-weight: 700;
+    font-size: 48px;
     letter-spacing: -0.03em;
     line-height: 1.1;
   }
@@ -29,15 +57,25 @@
   .display-serif {
     font-family: 'Playfair Display', Georgia, serif;
   }
+  
+  @media (min-width: 768px) {
+    h1 {
+      font-size: 56px;
+    }
+    
+    .hero-heading {
+      font-size: 64px;
+    }
+  }
 }
 
 @layer components {
   .btn-primary {
-    @apply bg-gold-600 hover:bg-gold-700 text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg;
+    @apply bg-saffron hover:bg-saffron-dark text-white font-semibold py-3 px-6 rounded-lg transition-all duration-200 shadow-md hover:shadow-lg;
   }
   
   .btn-secondary {
-    @apply bg-transparent hover:bg-gold-50 text-gold-700 border-2 border-gold-600 font-semibold py-3 px-6 rounded-lg transition-all duration-200;
+    @apply bg-white hover:bg-saffron-light/10 text-saffron border-2 border-saffron font-semibold py-3 px-6 rounded-lg transition-all duration-200;
   }
   
   .btn-outline {

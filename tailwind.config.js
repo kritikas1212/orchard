@@ -21,6 +21,11 @@ module.exports = {
           800: '#6E4F12',
           900: '#42300B',
         },
+        saffron: {
+          DEFAULT: '#D48A00',
+          light: '#E6A020',
+          dark: '#B87500',
+        },
         ivory: {
           DEFAULT: '#FFF8EE',
           dark: '#FFF3E0',

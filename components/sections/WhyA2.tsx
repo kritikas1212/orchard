@@ -26,7 +26,7 @@ export function WhyA2() {
   ]
 
   return (
-    <section className="py-16 md:py-24 bg-white">
+    <section className="py-20 md:py-32 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12">

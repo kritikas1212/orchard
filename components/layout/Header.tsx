@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { Search, ShoppingCart, Menu, X, User } from 'lucide-react'
 import { useCartStore } from '@/lib/stores/cartStore'
@@ -8,9 +8,19 @@ import { useCartStore } from '@/lib/stores/cartStore'
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isSearchOpen, setIsSearchOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
   const { items } = useCartStore()
   
   const cartItemCount = items.reduce((total, item) => total + item.quantity, 0)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50)
+    }
+    
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   const navigation = [
     { name: 'Home', href: '/' },
@@ -25,9 +35,15 @@ export function Header() {
   ]
 
   return (
-    <header className="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-50">
+    <header className={`sticky top-0 z-50 transition-all duration-300 ${
+      isScrolled 
+        ? 'bg-white/95 backdrop-blur-md shadow-lg border-b border-brown-200' 
+        : 'bg-white shadow-sm border-b border-gray-200'
+    }`}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className={`flex items-center justify-between transition-all duration-300 ${
+          isScrolled ? 'h-14' : 'h-16'
+        }`}>
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link href="/" className="flex items-center group">
