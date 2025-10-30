@@ -1,5 +1,6 @@
 import { Ruler, Users, Calendar, Sparkles } from 'lucide-react'
 
+// Metadata for SEO (server component)
 export const metadata = {
   title: 'Size Guide - Choose the Right Ghee Pack | VedicPure',
   description: 'Compare VedicPure A2 ghee pack sizes and find the perfect option for your needs. From 250g jars to 1L family packs.',

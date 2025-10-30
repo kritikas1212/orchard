@@ -50,7 +50,7 @@ export function ProductFilters() {
     setSelectedRating(null)
   }
 
-  const hasActiveFilters = selectedCategory !== 'all' || selectedPriceRange || selectedRating
+  const hasActiveFilters = selectedCategory !== 'all' || !!selectedPriceRange || !!selectedRating
 
   return (
     <>

@@ -12,7 +12,7 @@ interface ProductStructuredDataProps {
 }
 
 export function ProductStructuredData({ product }: ProductStructuredDataProps) {
-  const structuredData = {
+  const structuredData: any = {
     '@context': 'https://schema.org',
     '@type': 'Product',
     name: product.title,
@@ -37,7 +37,7 @@ export function ProductStructuredData({ product }: ProductStructuredDataProps) {
   }
 
   if (product.rating && product.reviewCount) {
-    structuredData['aggregateRating'] = {
+    structuredData.aggregateRating = {
       '@type': 'AggregateRating',
       ratingValue: product.rating,
       reviewCount: product.reviewCount,

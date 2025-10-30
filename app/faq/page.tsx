@@ -187,7 +187,4 @@ export default function FAQPage() {
   )
 }
 
-export const metadata = {
-  title: 'FAQ - VedicPure A2 Ghee | Common Questions Answered',
-  description: 'Find answers to common questions about VedicPure A2 Bilona ghee, including benefits, purity, shipping, subscriptions, and storage.',
-}
+// Metadata must be in layout.tsx or a separate metadata file for client components

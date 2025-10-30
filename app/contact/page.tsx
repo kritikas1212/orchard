@@ -273,7 +273,5 @@ export default function ContactPage() {
   )
 }
 
-export const metadata = {
-  title: 'Contact Us - VedicPure A2 Ghee | Customer Support',
-  description: 'Get in touch with VedicPure for questions about our A2 Bilona ghee, orders, subscriptions, or bulk inquiries. We\'re here to help!',
-}
+// Metadata must be in layout.tsx or a separate metadata file for client components
+// For now, set in the component head or use next/head
