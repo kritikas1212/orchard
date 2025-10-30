@@ -10,15 +10,21 @@ import { PromoModal } from '@/components/modals/PromoModal'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Orchard Store - Premium Natural Products',
-  description: 'Discover our collection of premium natural products including honey, ghee, and stone-ground flours. Quality you can trust.',
-  keywords: 'natural products, honey, ghee, organic, premium quality',
-  authors: [{ name: 'Orchard Store' }],
+  title: 'VedicPure - Premium A2 Bilona Ghee | Hand-Churned From Gir Cows',
+  description: 'Buy premium A2 Vedic Ghee from grass-fed Gir cows. Hand-churned using traditional Bilona method, lab-tested & preservative-free. Subscribe and save 10%.',
+  keywords: 'A2 ghee, Bilona ghee, Gir cow ghee, pure desi ghee, organic ghee, hand-churned ghee, grass-fed ghee, A2 milk ghee, traditional ghee, Vedic ghee',
+  authors: [{ name: 'VedicPure' }],
   openGraph: {
-    title: 'Orchard Store - Premium Natural Products',
-    description: 'Discover our collection of premium natural products including honey, ghee, and stone-ground flours.',
+    title: 'VedicPure - Premium A2 Bilona Ghee | Hand-Churned From Gir Cows',
+    description: 'Buy premium A2 Vedic Ghee from grass-fed Gir cows. Hand-churned using traditional Bilona method, lab-tested & preservative-free.',
     type: 'website',
-    locale: 'en_US',
+    locale: 'en_IN',
+    siteName: 'VedicPure',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'VedicPure - Premium A2 Bilona Ghee',
+    description: 'Hand-churned A2 ghee from grass-fed Gir cows. Lab-tested purity.',
   },
 }
 

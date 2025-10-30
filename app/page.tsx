@@ -1,15 +1,17 @@
-import { HeroSlider } from '@/components/sections/HeroSlider'
+import { GheeHero } from '@/components/sections/GheeHero'
+import { WhyA2 } from '@/components/sections/WhyA2'
+import { OurProcess } from '@/components/sections/OurProcess'
 import { BestSellers } from '@/components/sections/BestSellers'
-import { CategoriesGrid } from '@/components/sections/CategoriesGrid'
 import { Testimonials } from '@/components/sections/Testimonials'
 import { NewsletterSignup } from '@/components/sections/NewsletterSignup'
 
 export default function HomePage() {
   return (
     <div className="min-h-screen">
-      <HeroSlider />
+      <GheeHero />
+      <WhyA2 />
+      <OurProcess />
       <BestSellers />
-      <CategoriesGrid />
       <Testimonials />
       <NewsletterSignup />
     </div>
