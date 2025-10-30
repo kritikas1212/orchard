@@ -13,11 +13,14 @@ export function Header() {
   const cartItemCount = items.reduce((total, item) => total + item.quantity, 0)
 
   const navigation = [
+    { name: 'Home', href: '/' },
+    { name: 'Our Ghee', href: '/shop' },
+    { name: 'Process', href: '/process' },
     { name: 'Shop', href: '/shop' },
-    { name: 'Collections', href: '/collections' },
-    { name: 'Packs', href: '/packs' },
-    { name: 'About', href: '/about' },
+    { name: 'Bundles', href: '/packs' },
     { name: 'Lab Reports', href: '/lab-reports' },
+    { name: 'Recipes', href: '/recipes' },
+    { name: 'About', href: '/about' },
     { name: 'Blog', href: '/blog' },
   ]
 
@@ -27,12 +30,15 @@ export function Header() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Link href="/" className="flex items-center">
-              <div className="flex items-center space-x-2">
-                <div className="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-lg">O</span>
+            <Link href="/" className="flex items-center group">
+              <div className="flex items-center space-x-3">
+                <div className="w-10 h-10 bg-gradient-to-br from-gold-500 to-gold-700 rounded-lg flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow">
+                  <span className="text-white font-bold text-xl font-serif">V</span>
                 </div>
-                <span className="text-xl font-bold text-gray-900">Orchard Store</span>
+                <div className="flex flex-col">
+                  <span className="text-2xl font-bold font-serif text-brown-800 leading-tight tracking-tight">VedicPure</span>
+                  <span className="text-[10px] text-gold-700 font-medium tracking-wider uppercase">Premium A2 Ghee</span>
+                </div>
               </div>
             </Link>
           </div>
