@@ -5,50 +5,50 @@ import { Star, Quote } from 'lucide-react'
 const testimonials = [
   {
     id: 1,
-    name: 'Sarah Johnson',
-    location: 'San Francisco, CA',
+    name: 'Priya Sharma',
+    location: 'Mumbai, Maharashtra',
     rating: 5,
-    text: 'The raw honey is absolutely incredible! I\'ve been using it in my morning tea and the flavor is unlike anything I\'ve tasted before. The quality is outstanding.',
+    text: 'VedicPure A2 ghee is the real deal! The granular texture and nutty aroma prove it\'s authentic Bilona method. My family noticed the difference immediately. Perfect for our daily rotis and traditional cooking.',
     image: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&h=100&fit=crop&crop=face',
   },
   {
     id: 2,
-    name: 'Michael Chen',
-    location: 'Austin, TX',
+    name: 'Rajesh Kumar',
+    location: 'Delhi, NCR',
     rating: 5,
-    text: 'The stone-ground flour has transformed my baking. Everything comes out so much more flavorful and nutritious. My family can definitely tell the difference.',
+    text: 'After trying many brands, VedicPure is the only A2 ghee that matches my grandmother\'s homemade ghee. The lab reports give me confidence, and the taste is absolutely authentic. Subscribed for monthly delivery!',
     image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face',
   },
   {
     id: 3,
-    name: 'Emily Rodriguez',
-    location: 'Miami, FL',
+    name: 'Meena Patel',
+    location: 'Ahmedabad, Gujarat',
     rating: 5,
-    text: 'I\'ve been buying the ghee for months now and it\'s become a staple in my kitchen. The quality is consistent and the taste is authentic. Highly recommended!',
+    text: 'Being from Gujarat, I grew up with pure desi ghee. VedicPure brings back those authentic flavors. My kids love it on their parathas, and I use it for my Ayurvedic wellness routine. Worth every rupee!',
     image: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face',
   },
   {
     id: 4,
-    name: 'David Thompson',
-    location: 'Seattle, WA',
+    name: 'Arjun Reddy',
+    location: 'Bangalore, Karnataka',
     rating: 5,
-    text: 'The combo pack was perfect for trying different products. Everything arrived fresh and well-packaged. The customer service is also excellent.',
+    text: 'The 500g jar is perfect for my family of four. Lasts about a month with daily use. The subscription discount is great, and knowing it\'s from Gir cows gives me peace of mind about quality.',
     image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face',
   },
   {
     id: 5,
-    name: 'Lisa Wang',
-    location: 'New York, NY',
+    name: 'Anjali Desai',
+    location: 'Pune, Maharashtra',
     rating: 5,
-    text: 'As someone who values organic and natural products, Orchard Store has exceeded my expectations. The transparency in sourcing is commendable.',
+    text: 'I was skeptical about ordering ghee online, but the packaging was excellent and the product arrived fresh. The golden color and rich aroma convinced me it\'s pure. The lab reports on the website are very reassuring.',
     image: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&h=100&fit=crop&crop=face',
   },
   {
     id: 6,
-    name: 'James Wilson',
-    location: 'Denver, CO',
+    name: 'Vikram Singh',
+    location: 'Jaipur, Rajasthan',
     rating: 5,
-    text: 'The lab reports give me confidence in the quality. It\'s rare to find a company that\'s so transparent about their testing and sourcing practices.',
+    text: 'As someone from Rajasthan, I know good ghee when I taste it. VedicPure\'s A2 ghee is authentic - you can see the granular texture and smell the traditional wood-fire cooking. Best ghee I\'ve found online!',
     image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face',
   },
 ]
@@ -67,7 +67,7 @@ export function Testimonials() {
   }
 
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="py-20 md:py-32 bg-gradient-to-br from-ivory to-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">

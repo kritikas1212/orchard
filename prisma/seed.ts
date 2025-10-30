@@ -266,10 +266,10 @@ async function main() {
   ]
 
   for (const report of labReports) {
-    await prisma.labReport.upsert({
-      where: { title: report.title },
-      update: {},
-      create: report,
+    await prisma.labReport.create({
+      data: report,
+    }).catch(() => {
+      console.log(`Lab report "${report.title}" may already exist, skipping...`)
     })
   }
 

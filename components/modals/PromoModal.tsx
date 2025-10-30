@@ -46,37 +46,38 @@ export function PromoModal() {
                 <span className="text-2xl">🎉</span>
               </div>
               
-              <h2 className="text-2xl font-bold text-gray-900 mb-2">
-                Welcome to Orchard Store!
+              <h2 className="text-2xl font-serif font-bold text-brown-900 mb-2">
+                Welcome to VedicPure!
               </h2>
               
-              <p className="text-gray-600 mb-6">
-                Get <strong>15% OFF</strong> your first order with our premium starter pack. 
-                Discover the finest natural products for your kitchen.
+              <p className="text-brown-600 mb-6">
+                Get <strong className="text-gold-700">15% OFF</strong> your first jar of premium A2 Bilona ghee. 
+                Experience the authentic taste of tradition.
               </p>
               
-              <div className="bg-primary-50 border border-primary-200 rounded-lg p-4 mb-6">
-                <p className="text-sm text-primary-800">
-                  <strong>Starter Pack includes:</strong><br />
-                  • Raw Honey (500g)<br />
-                  • Pure Ghee (250g)<br />
-                  • Stone-ground Flour (1kg)
+              <div className="bg-gold-50 border border-gold-200 rounded-lg p-4 mb-6">
+                <p className="text-sm text-gold-900">
+                  <strong>Why VedicPure A2 Ghee?</strong><br />
+                  ✓ Hand-Churned Bilona Method<br />
+                  ✓ 100% Grass-Fed Gir Cow Milk<br />
+                  ✓ Lab-Tested Purity<br />
+                  ✓ Subscribe & Save 10% More
                 </p>
               </div>
               
               <div className="flex flex-col sm:flex-row gap-3">
                 <Link
-                  href="/packs"
+                  href="/shop"
                   className="btn-primary flex-1 text-center"
                   onClick={handleClose}
                 >
-                  Shop Starter Pack
+                  Shop A2 Ghee
                 </Link>
                 <button
                   onClick={handleClose}
                   className="btn-secondary flex-1"
                 >
-                  Maybe Later
+                  Browse More
                 </button>
               </div>
             </div>

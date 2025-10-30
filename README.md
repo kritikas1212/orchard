@@ -1,6 +1,6 @@
-# Orchard Store - Premium Natural Products E-commerce
+# VedicPure - Premium A2 Bilona Ghee E-commerce
 
-A modern, production-ready e-commerce storefront built with Next.js, featuring premium natural products including honey, ghee, and stone-ground flours.
+A modern, production-ready e-commerce platform for VedicPure, specializing in authentic A2 Bilona ghee hand-churned from grass-fed Gir cow milk. Built with Next.js 14, TypeScript, and Tailwind CSS.
 
 ## 🚀 Features
 

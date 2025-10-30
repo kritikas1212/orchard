@@ -8,8 +8,8 @@ export function CartSummary() {
   const { items, getTotalPrice, getTotalItems } = useCartStore()
   
   const subtotal = getTotalPrice()
-  const shipping = subtotal > 50 ? 0 : 9.99 // Free shipping over $50
-  const tax = subtotal * 0.08 // 8% tax
+  const shipping = subtotal > 999 ? 0 : 99 // Free shipping over ₹999
+  const tax = subtotal * 0.18 // 18% GST
   const total = subtotal + shipping + tax
 
   return (
@@ -19,48 +19,59 @@ export function CartSummary() {
       {/* Order Details */}
       <div className="space-y-3 mb-6">
         <div className="flex justify-between text-sm">
-          <span className="text-gray-600">Subtotal ({getTotalItems()} items)</span>
-          <span className="font-medium">${subtotal.toFixed(2)}</span>
+          <span className="text-brown-600">Subtotal ({getTotalItems()} items)</span>
+          <span className="font-semibold text-brown-900">₹{subtotal.toLocaleString('en-IN')}</span>
         </div>
         
         <div className="flex justify-between text-sm">
-          <span className="text-gray-600">Shipping</span>
-          <span className="font-medium">
-            {shipping === 0 ? 'Free' : `$${shipping.toFixed(2)}`}
+          <span className="text-brown-600">Shipping</span>
+          <span className="font-semibold text-brown-900">
+            {shipping === 0 ? <span className="text-green-600">Free</span> : `₹${shipping.toLocaleString('en-IN')}`}
           </span>
         </div>
         
         <div className="flex justify-between text-sm">
-          <span className="text-gray-600">Tax</span>
-          <span className="font-medium">${tax.toFixed(2)}</span>
+          <span className="text-brown-600">GST (18%)</span>
+          <span className="font-semibold text-brown-900">₹{tax.toLocaleString('en-IN', { maximumFractionDigits: 0 })}</span>
         </div>
         
-        <div className="border-t border-gray-200 pt-3">
-          <div className="flex justify-between text-lg font-semibold">
-            <span>Total</span>
-            <span>${total.toFixed(2)}</span>
+        <div className="border-t-2 border-gold-200 pt-4 mt-4">
+          <div className="flex justify-between text-xl font-bold font-serif">
+            <span className="text-brown-900">Total</span>
+            <span className="text-saffron">₹{total.toLocaleString('en-IN', { maximumFractionDigits: 0 })}</span>
           </div>
         </div>
       </div>
 
       {/* Free Shipping Progress */}
-      {subtotal < 50 && (
-        <div className="mb-6 p-3 bg-primary-50 border border-primary-200 rounded-lg">
-          <div className="flex items-center gap-2 mb-2">
-            <Truck size={16} className="text-primary-600" />
-            <span className="text-sm font-medium text-primary-900">
-              Free shipping on orders over $50
+      {subtotal < 999 && subtotal > 0 && (
+        <div className="mb-6 p-4 bg-gold-50 border-2 border-gold-200 rounded-xl">
+          <div className="flex items-center gap-2 mb-3">
+            <Truck size={18} className="text-gold-600" />
+            <span className="text-sm font-semibold text-gold-900">
+              Free shipping on orders over ₹999
             </span>
           </div>
-          <div className="w-full bg-primary-200 rounded-full h-2">
+          <div className="w-full bg-gold-200 rounded-full h-3">
             <div 
-              className="bg-primary-600 h-2 rounded-full transition-all duration-300"
-              style={{ width: `${(subtotal / 50) * 100}%` }}
+              className="bg-gradient-to-r from-gold-500 to-gold-600 h-3 rounded-full transition-all duration-300 shadow-sm"
+              style={{ width: `${Math.min((subtotal / 999) * 100, 100)}%` }}
             />
           </div>
-          <p className="text-xs text-primary-700 mt-1">
-            Add ${(50 - subtotal).toFixed(2)} more for free shipping
+          <p className="text-xs text-gold-700 mt-2 font-medium">
+            Add ₹{(999 - subtotal).toLocaleString('en-IN')} more for FREE shipping! 🎉
           </p>
+        </div>
+      )}
+      
+      {subtotal >= 999 && (
+        <div className="mb-6 p-4 bg-green-50 border-2 border-green-200 rounded-xl">
+          <div className="flex items-center gap-2 text-green-800">
+            <Truck size={18} className="text-green-600" />
+            <span className="text-sm font-semibold">
+              🎉 You qualify for FREE shipping!
+            </span>
+          </div>
         </div>
       )}
 

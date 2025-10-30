@@ -1,68 +1,72 @@
 import { ProductCard } from '@/components/product/ProductCard'
 import Link from 'next/link'
 
-// Mock data - in real app this would come from API
+// VedicPure A2 Ghee Best Sellers
 const bestSellers = [
   {
     id: '1',
-    title: 'Raw Wildflower Honey',
-    price: 24.99,
-    compareAtPrice: 29.99,
-    image: 'https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=400&h=400&fit=crop',
-    rating: 4.8,
-    reviewCount: 124,
+    title: 'Premium A2 Bilona Ghee - 500g',
+    price: 1099,
+    compareAtPrice: 1299,
+    image: 'https://images.unsplash.com/photo-1628408708959-60c0c3a710e7?w=400&h=400&fit=crop',
+    rating: 4.9,
+    reviewCount: 247,
     isOnSale: true,
     isSoldOut: false,
-    slug: 'raw-wildflower-honey',
+    slug: 'a2-bilona-ghee-500g',
   },
   {
     id: '2',
-    title: 'Pure Cow Ghee',
-    price: 18.99,
-    compareAtPrice: null,
-    image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=400&fit=crop',
-    rating: 4.9,
-    reviewCount: 89,
-    isOnSale: false,
+    title: 'Premium A2 Bilona Ghee - 250g',
+    price: 599,
+    compareAtPrice: 699,
+    image: 'https://images.unsplash.com/photo-1628408708959-60c0c3a710e7?w=400&h=400&fit=crop',
+    rating: 4.8,
+    reviewCount: 189,
+    isOnSale: true,
     isSoldOut: false,
-    slug: 'pure-cow-ghee',
+    slug: 'a2-bilona-ghee-250g',
   },
   {
     id: '3',
-    title: 'Stone-Ground Wheat Flour',
-    price: 12.99,
-    compareAtPrice: 15.99,
-    image: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?w=400&h=400&fit=crop',
-    rating: 4.7,
-    reviewCount: 67,
+    title: 'Premium A2 Bilona Ghee - 1L',
+    price: 2099,
+    compareAtPrice: 2499,
+    image: 'https://images.unsplash.com/photo-1628408708959-60c0c3a710e7?w=400&h=400&fit=crop',
+    rating: 4.9,
+    reviewCount: 156,
     isOnSale: true,
     isSoldOut: false,
-    slug: 'stone-ground-wheat-flour',
+    slug: 'a2-bilona-ghee-1l',
   },
   {
     id: '4',
-    title: 'Organic Jaggery',
-    price: 16.99,
-    compareAtPrice: null,
-    image: 'https://images.unsplash.com/photo-1609501676725-7186f3a4a0a8?w=400&h=400&fit=crop',
-    rating: 4.6,
-    reviewCount: 43,
-    isOnSale: false,
-    isSoldOut: true,
-    slug: 'organic-jaggery',
+    title: 'A2 Ghee Sampler Set (3x100g)',
+    price: 699,
+    compareAtPrice: 849,
+    image: 'https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=400&h=400&fit=crop',
+    rating: 4.7,
+    reviewCount: 98,
+    isOnSale: true,
+    isSoldOut: false,
+    slug: 'a2-ghee-sampler-set',
   },
 ]
 
 export function BestSellers() {
   return (
-    <section className="py-16 bg-gray-50">
+    <section className="py-20 md:py-32 bg-gradient-to-br from-white to-ivory">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Best Sellers
+          <span className="inline-block text-gold-600 font-semibold text-sm uppercase tracking-wider mb-3">
+            Customer Favorites
+          </span>
+          <h2 className="text-3xl md:text-4xl font-serif font-bold text-brown-900 mb-4">
+            Premium A2 Ghee Collection
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Discover our most loved products, carefully selected by our customers for their exceptional quality and taste.
+          <p className="text-lg text-brown-600 max-w-2xl mx-auto">
+            Hand-churned using the traditional Bilona method from grass-fed Gir cow milk. 
+            Lab-tested for purity and loved by thousands of customers.
           </p>
         </div>
 

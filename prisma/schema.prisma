@@ -20,20 +20,43 @@ model User {
 }
 
 model Product {
-  id            String     @id @default(cuid())
-  title         String
-  slug          String     @unique
-  description   String
-  priceCents    Int
+  id             String     @id @default(cuid())
+  title          String
+  slug           String     @unique
+  description    String
+  priceCents     Int
   compareAtCents Int?
-  sku           String?
-  images        String[]   // urls
-  categories    Category[] @relation("ProductCategories")
-  variants      Json?
-  inventory     Int
-  isActive      Boolean    @default(true)
-  createdAt     DateTime   @default(now())
-  updatedAt     DateTime   @updatedAt
+  sku            String?
+  images         String[] // urls
+  categories     Category[] @relation("ProductCategories")
+  variants       Json?
+  inventory      Int
+  isActive       Boolean    @default(true)
+
+  // A2 Ghee Specific Fields
+  isA2           Boolean @default(false)
+  process        String? // e.g., "Bilona Hand-Churned"
+  milkSource     String? // e.g., "Grass-fed Gir Cows"
+  labReports     Json? // Array of lab report objects
+  certifications Json? // Array of certification objects
+
+  // Subscription Options
+  subscriptionAvailable Boolean  @default(false)
+  subscriptionIntervals String[] // ["monthly", "quarterly", "biannual"]
+  subscriptionDiscount  Int? // Percentage discount
+
+  // Gift & Packaging
+  giftPackagingAvailable  Boolean @default(false)
+  giftPackagingPriceCents Int?
+
+  // Product Details
+  shelfLifeMonths Int?
+  weight          String? // e.g., "500g", "1L"
+  nutritionFacts  Json?
+  usageNotes      String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
 }
 
 model Category {
@@ -46,6 +69,7 @@ model Category {
 model Order {
   id         String   @id @default(cuid())
   userId     String?
+  user       User?    @relation(fields: [userId], references: [id])
   totalCents Int
   items      Json
   status     String
@@ -55,11 +79,11 @@ model Order {
 }
 
 model LabReport {
-  id          String   @id @default(cuid())
-  title       String
-  description String?
-  pdfUrl      String
+  id           String   @id @default(cuid())
+  title        String
+  description  String?
+  pdfUrl       String
   thumbnailUrl String?
-  productId   String?
-  createdAt   DateTime @default(now())
+  productId    String?
+  createdAt    DateTime @default(now())
 }

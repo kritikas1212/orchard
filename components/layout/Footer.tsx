@@ -38,13 +38,16 @@ export function Footer() {
           {/* Brand */}
           <div className="lg:col-span-1">
             <div className="flex items-center space-x-2 mb-4">
-              <div className="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-lg">O</span>
+              <div className="w-10 h-10 bg-gradient-to-br from-gold-500 to-gold-700 rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-xl font-serif">V</span>
               </div>
-              <span className="text-xl font-bold">Orchard Store</span>
+              <div className="flex flex-col">
+                <span className="text-xl font-bold font-serif">VedicPure</span>
+                <span className="text-[10px] text-gold-400 font-medium">Premium A2 Ghee</span>
+              </div>
             </div>
             <p className="text-gray-400 text-sm mb-4">
-              Premium natural products for your kitchen. Quality you can trust, delivered fresh to your door.
+              Hand-churned A2 Bilona ghee from grass-fed Gir cows. Lab-tested purity, traditional methods, delivered fresh to your door.
             </p>
             <div className="flex space-x-4">
               <a href="#" className="text-gray-400 hover:text-white transition-colors">
@@ -128,7 +131,7 @@ export function Footer() {
         <div className="border-t border-gray-800 mt-8 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-400 text-sm">
-              © 2024 Orchard Store. All rights reserved.
+              © 2024 VedicPure. All rights reserved.
             </p>
             <div className="flex items-center space-x-4 mt-4 md:mt-0">
               <span className="text-gray-400 text-sm">We accept:</span>

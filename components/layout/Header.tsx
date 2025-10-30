@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { Search, ShoppingCart, Menu, X, User } from 'lucide-react'
 import { useCartStore } from '@/lib/stores/cartStore'
@@ -8,31 +8,53 @@ import { useCartStore } from '@/lib/stores/cartStore'
 export function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isSearchOpen, setIsSearchOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
   const { items } = useCartStore()
   
   const cartItemCount = items.reduce((total, item) => total + item.quantity, 0)
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50)
+    }
+    
+    window.addEventListener('scroll', handleScroll)
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
   const navigation = [
+    { name: 'Home', href: '/' },
+    { name: 'Our Ghee', href: '/shop' },
+    { name: 'Process', href: '/process' },
     { name: 'Shop', href: '/shop' },
-    { name: 'Collections', href: '/collections' },
-    { name: 'Packs', href: '/packs' },
-    { name: 'About', href: '/about' },
+    { name: 'Bundles', href: '/packs' },
     { name: 'Lab Reports', href: '/lab-reports' },
+    { name: 'Recipes', href: '/recipes' },
+    { name: 'About', href: '/about' },
     { name: 'Blog', href: '/blog' },
   ]
 
   return (
-    <header className="bg-white shadow-sm border-b border-gray-200 sticky top-0 z-50">
+    <header className={`sticky top-0 z-50 transition-all duration-300 ${
+      isScrolled 
+        ? 'bg-white/95 backdrop-blur-md shadow-lg border-b border-brown-200' 
+        : 'bg-white shadow-sm border-b border-gray-200'
+    }`}>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16">
+        <div className={`flex items-center justify-between transition-all duration-300 ${
+          isScrolled ? 'h-14' : 'h-16'
+        }`}>
           {/* Logo */}
           <div className="flex-shrink-0">
-            <Link href="/" className="flex items-center">
-              <div className="flex items-center space-x-2">
-                <div className="w-8 h-8 bg-primary-600 rounded-lg flex items-center justify-center">
-                  <span className="text-white font-bold text-lg">O</span>
+            <Link href="/" className="flex items-center group">
+              <div className="flex items-center space-x-3">
+                <div className="w-10 h-10 bg-gradient-to-br from-gold-500 to-gold-700 rounded-lg flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow">
+                  <span className="text-white font-bold text-xl font-serif">V</span>
                 </div>
-                <span className="text-xl font-bold text-gray-900">Orchard Store</span>
+                <div className="flex flex-col">
+                  <span className="text-2xl font-bold font-serif text-brown-800 leading-tight tracking-tight">VedicPure</span>
+                  <span className="text-[10px] text-gold-700 font-medium tracking-wider uppercase">Premium A2 Ghee</span>
+                </div>
               </div>
             </Link>
           </div>

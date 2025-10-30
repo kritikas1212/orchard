@@ -21,14 +21,14 @@ export function AnnouncementBar() {
   if (!isVisible) return null
 
   return (
-    <div className="bg-primary-600 text-white py-2 px-4 relative">
+    <div className="bg-brown-800 text-ivory py-2 px-4 relative">
       <div className="container mx-auto flex items-center justify-center">
         <p className="text-sm font-medium text-center">
-          🎉 Flat 10% OFF — use code: <span className="font-bold">WELCOME10</span>
+          ✨ From our Gir cows to your kitchen — Lab-tested A2 Ghee | <span className="font-bold text-gold-400">Flat 10% OFF</span> — use code: <span className="font-bold">WELCOME10</span>
         </p>
         <button
           onClick={handleDismiss}
-          className="absolute right-4 p-1 hover:bg-primary-700 rounded"
+          className="absolute right-4 p-1 hover:bg-brown-700 rounded transition-colors"
           aria-label="Dismiss announcement"
         >
           <X size={16} />
