@@ -1,0 +1,90 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [main, feature/ghee-premium-revamp]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint:
+    name: Lint Code
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run lint
+
+  build:
+    name: Build Application
+    runs-on: ubuntu-latest
+    needs: lint
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+      - run: npm ci
+      - run: npm run build
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: build
+          path: .next
+
+  test-e2e:
+    name: E2E Tests
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+      - run: npm ci
+      - run: npx playwright install --with-deps
+      - run: npm run test:e2e
+        env:
+          DATABASE_URL: ${{ secrets.DATABASE_URL }}
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30
+
+  deploy-preview:
+    name: Deploy to Vercel (Preview)
+    runs-on: ubuntu-latest
+    needs: [build, test-e2e]
+    if: github.event_name == 'pull_request'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          scope: ${{ secrets.VERCEL_ORG_ID }}
+
+  deploy-production:
+    name: Deploy to Vercel (Production)
+    runs-on: ubuntu-latest
+    needs: [build, test-e2e]
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: amondnet/vercel-action@v25
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          vercel-args: '--prod'
+          scope: ${{ secrets.VERCEL_ORG_ID }}

@@ -6,6 +6,7 @@ import { Header } from '@/components/layout/Header'
 import { Footer } from '@/components/layout/Footer'
 import { AnnouncementBar } from '@/components/layout/AnnouncementBar'
 import { PromoModal } from '@/components/modals/PromoModal'
+import { OrganizationStructuredData } from '@/components/seo/StructuredData'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -35,6 +36,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <OrganizationStructuredData />
+      </head>
       <body className={inter.className}>
         <Providers>
           <AnnouncementBar />
