@@ -1,0 +1,19 @@
+# robots.txt for VedicPure
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://vedicpure.vercel.app/sitemap.xml
+
+# Disallow admin and API routes
+Disallow: /api/
+Disallow: /admin/
+Disallow: /_next/
+Disallow: /checkout/
+
+# Allow product pages
+Allow: /product/
+Allow: /shop
+Allow: /blog/
+Allow: /recipes/
